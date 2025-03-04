@@ -4,8 +4,6 @@ package com.devgen.quiz.service;
 
 import com.devgen.quiz.model.Question;
 
-import java.util.Scanner;
-
 public class QuestionService {
 
     //system should have some question
@@ -13,12 +11,6 @@ public class QuestionService {
     //store que in memory
 
     private Question[] questions = new Question[5];
-
-    //Input Answer should store for score calculation
-
-    private String[] userSelectedAnswer = new String[5];
-
-    Scanner sc =new Scanner(System.in);
 
     public QuestionService() {
 
@@ -37,55 +29,29 @@ public class QuestionService {
         }
         */
 
-
         }
 
-    public void playQuiz() {
-
-        //Display id , Question and Option
-        for (int i = 0; i < questions.length; i++) {
-            //Print Question
-            System.out.println("Question NUmber : " + questions[i].getId());
-            System.out.print(questions[i].getQuestion());
-
-            //Display Option
-            System.out.println();
-            System.out.println(questions[i].getOption1());
-            System.out.println(questions[i].getOption2());
-            System.out.println(questions[i].getOption3());
-            System.out.println(questions[i].getOption4());
-
-            //Take input from Student
-
-            System.out.println("Enter Your Answer");
-            userSelectedAnswer[i]= sc.next();
-
-
-        }
-        sc.close();
+    //Add Question
+    public String addQuestion(Question question){
+        return "Question Added Successfully";
     }
 
-    //Score comparison Calculation
-
-    public void printFinalScore()
-    {
-        int correctAnswers=0;
-        int incorrectAnswer=0;
-
-        for(int i =0;i<userSelectedAnswer.length;i++)
-        {
-            if(questions[i].getAnswer().equals(userSelectedAnswer[i])){
-                correctAnswers++;
-            }
-        }
-
-        incorrectAnswer=questions.length-correctAnswers;
-
-        double percentage = ((double) correctAnswers / questions.length) * 100;
-
-        System.out.println();
-        System.out.println("Correct Answer : "+correctAnswers);
-        System.out.println("Incorrect Answer : "+incorrectAnswer);
-        System.out.println("Percentage : "+percentage);
+    //Update Question
+    public String updateQuestion(Question question){
+        return "Question Update Successfully";
     }
+
+    //Delete Question(Use Id)
+    public String deleteQuestion(int id){
+        return "Question Deleted Successfully";
+    }
+
+    //All Question to pass QuizService
+    public Question[] getAllQuestion(){
+        return questions;
+    }
+
+
+
+
 }
