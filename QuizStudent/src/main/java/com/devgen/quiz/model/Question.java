@@ -1,12 +1,18 @@
 package com.devgen.quiz.model;
 
+import java.util.Arrays;
+
 public class Question {
 
     private int id;
     private String question;
-    private String option1,option2,option3,option4;
+    /* private String option1,option2,option3,option4;
+    Multiple data same data type use array
+   */
+    private String[] options;       //can give 2/4 option
     private String answer;
 
+    /*
     public Question(int id, String question, String option1, String option2, String option3, String option4, String answer) {
         this.id = id;
         this.question = question;
@@ -14,6 +20,16 @@ public class Question {
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
+        this.answer = answer;
+    }
+    */
+
+
+    public Question(int id, String question,String[] options ,String answer)
+    {
+        this.id = id;
+        this.question = question;
+        this.options = options;
         this.answer = answer;
     }
 
@@ -33,6 +49,7 @@ public class Question {
         this.question = question;
     }
 
+    /*
     public String getOption1() {
         return option1;
     }
@@ -65,6 +82,8 @@ public class Question {
         this.option4 = option4;
     }
 
+     */
+
     public String getAnswer() {
         return answer;
     }
@@ -73,7 +92,11 @@ public class Question {
         this.answer = answer;
     }
 
-    @Override
+    public String[] getOptions() {
+        return options;
+    }
+
+    /*   @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
@@ -85,5 +108,17 @@ public class Question {
                 ", answer='" + answer + '\'' +
                 '}';
 
+    }
+
+  */
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                ", options=" + Arrays.toString(options) +
+                ", answer='" + answer + '\'' +
+                '}';
     }
 }

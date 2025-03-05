@@ -44,18 +44,25 @@ public class QuizService {
             System.out.println("Question NUmber : " + questions[i].getId());
             System.out.print(questions[i].getQuestion());
 
-            //Display Option
+        /*    //Display Option
             System.out.println();
             System.out.println(questions[i].getOption1());
             System.out.println(questions[i].getOption2());
             System.out.println(questions[i].getOption3());
             System.out.println(questions[i].getOption4());
+        */
+
+            //Display Option
+            System.out.println();
+            for(String option:questions[i].getOptions())
+            {
+                System.out.println(option);
+            }
 
             //Take input from Student
+            System.out.println();
             System.out.println("Enter Your Answer");
             userSelectedAnswer[i]= sc.next();
-
-
         }
         sc.close();
     }

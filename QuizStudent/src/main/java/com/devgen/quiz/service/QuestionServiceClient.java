@@ -8,10 +8,10 @@ public class QuestionServiceClient {
 
         QuestionService questionService = new QuestionService(10);
 
-        Question question1 = new Question(6,"Java Born Year","1885","1920","1995","2004","1995");
+        Question question1 = new Question(6,"Java Born Year",new String[]{"1885","1920","1995","2004"},"1995");
         questionService.addQuestion(question1);
 
-        Question question2 = new Question(7,"Java Born Year","1885","1920","1995","2004","1995");
+        Question question2 = new Question(7,"Java Born Year",new String[]{"1885","1920","1995","2004"},"1995");
         questionService.addQuestion(question2);
 
 
