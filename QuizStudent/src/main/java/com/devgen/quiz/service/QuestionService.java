@@ -51,7 +51,7 @@ public class QuestionService {
         arrayIndex++;
         questions[arrayIndex]= new Question(2,"Size of int data type",new String[]{"2","4"},2);
         arrayIndex++;
-        questions[arrayIndex]= new Question(3,"Size of float data type",new String[]{"2","4","1","8"},2);
+        questions[arrayIndex]= new Question(3,"Size of float data type",new String[]{"2","4","1","8"},3);
         arrayIndex++;
         questions[arrayIndex++]= new Question(4,"Size of double data type",new String[]{"2","4","1","8"},4);
         questions[arrayIndex++]= new Question(5,"Size of char data type",new String[]{"2","4"},1);
@@ -60,23 +60,32 @@ public class QuestionService {
 
 
     //Add Question
-    public String addQuestion(Question question){
-        int length = questions.length;
+    public void addQuestion(Question question){
+
         questions[arrayIndex]=question;
         arrayIndex++;
 
-
-        return "Question Added Successfully";
+        System.out.println("Question Added Successfully");
     }
 
     //Update Question
-    public String updateQuestion(Question question){
-        return "Question Update Successfully";
+    public void updateQuestion(Question modifiedquestion){
+
+        int id=modifiedquestion.getId();
+
+        for(int i=0;i<questions.length;i++) {
+            if (id == questions[i].getId()){
+                 questions[i]=modifiedquestion;
+                 break;
+            }
+        }
+
+        System.out.println("Question Update Successfully");
     }
 
     //Delete Question(Use Id)
-    public String deleteQuestion(int id){
-        return "Question Deleted Successfully";
+    public void deleteQuestion(int id){
+        System.out.println("Question Deleted Successfully");
     }
 
     //All Question to pass QuizService
