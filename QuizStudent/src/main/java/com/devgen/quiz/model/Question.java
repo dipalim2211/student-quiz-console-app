@@ -10,7 +10,7 @@ public class Question {
     Multiple data same data type use array
    */
     private String[] options;       //can give 2/4 option
-    private String answer;
+    private int answer;
 
     /*
     public Question(int id, String question, String option1, String option2, String option3, String option4, String answer) {
@@ -25,7 +25,7 @@ public class Question {
     */
 
 
-    public Question(int id, String question,String[] options ,String answer)
+    public Question(int id, String question,String[] options ,int answer)
     {
         this.id = id;
         this.question = question;
@@ -84,11 +84,11 @@ public class Question {
 
      */
 
-    public String getAnswer() {
+    public int getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(int answer) {
         this.answer = answer;
     }
 

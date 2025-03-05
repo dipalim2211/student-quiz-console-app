@@ -9,7 +9,7 @@ public class QuizService {
 
     private Question[] questions;
 
-    private String[] userSelectedAnswer = new String[5]; //Input Answer should store for score calculation
+    private int[] userSelectedAnswer = new int[5]; //Input Answer should store for score calculation
 
     private QuestionService questionService;        //Loosely Coupled
 
@@ -62,7 +62,7 @@ public class QuizService {
             //Take input from Student
             System.out.println();
             System.out.println("Enter Your Answer");
-            userSelectedAnswer[i]= sc.next();
+            userSelectedAnswer[i]= sc.nextInt();
         }
         sc.close();
     }
@@ -76,7 +76,7 @@ public class QuizService {
 
         for(int i =0;i<userSelectedAnswer.length;i++)
         {
-            if(questions[i].getAnswer().equals(userSelectedAnswer[i])){
+            if(questions[i].getAnswer()==(userSelectedAnswer[i])){
                 correctAnswers++;
             }
         }
