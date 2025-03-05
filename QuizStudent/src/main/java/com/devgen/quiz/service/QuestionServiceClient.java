@@ -15,6 +15,7 @@ public class QuestionServiceClient {
         questionService.addQuestion(question2);
 
 
+        //Update Question
         Question[] questions =questionService.getAllQuestion();
         Question originalQuestion  =questions[2];
         originalQuestion.setAnswer(2);
@@ -25,6 +26,15 @@ public class QuestionServiceClient {
         questions = questionService.getAllQuestion();
         for(Question q : questions)
             System.out.println(q);
+
+        System.out.println("----------**********-------------");
+        //Delete Question
+        questionService.deleteQuestion(4);
+
+        questions = questionService.getAllQuestion();
+        for(Question q1 : questions)
+            System.out.println(q1);
+
 
     }
 

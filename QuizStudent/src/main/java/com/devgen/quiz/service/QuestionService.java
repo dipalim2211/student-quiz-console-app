@@ -84,7 +84,15 @@ public class QuestionService {
     }
 
     //Delete Question(Use Id)
-    public void deleteQuestion(int id){
+    public void deleteQuestion(int id)
+    {
+        for(int i=0;i<questions.length;i++) {
+            if (questions[i] != null) {
+                if (id == questions[i].getId()) {
+                    questions[i] = null;
+                }
+            }
+        }
         System.out.println("Question Deleted Successfully");
     }
 
