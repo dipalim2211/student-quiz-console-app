@@ -1,6 +1,7 @@
 package com.devgen.quiz.service;
 
 import com.devgen.quiz.model.Question;
+import com.devgen.quiz.model.QuizResult;
 
 import java.util.Scanner;
 
@@ -8,19 +9,31 @@ public class QuizService {
 
     private Question[] questions;
 
-    //Input Answer should store for score calculation
-    private String[] userSelectedAnswer = new String[5];
+    private String[] userSelectedAnswer = new String[5]; //Input Answer should store for score calculation
 
+    private QuestionService questionService;        //Loosely Coupled
+
+    /*  Tightly Coupled with question service
     public QuizService(){
 
         //To get all question from QuestionService call getAllQuestion
-        
+
         QuestionService questionService = new QuestionService();
         questions=questionService.getAllQuestion();
+    }
+    */
 
+    //Loosely Coupled Using Constructor
+
+    public QuizService(QuestionService questionService)        //By constructor call Dependency
+    {
+        this.questionService=questionService;
+        questions=questionService.getAllQuestion();
     }
 
-    public void playQuiz() {
+
+    public void playQuiz()
+    {
 
         Scanner sc =new Scanner(System.in);
 
@@ -49,7 +62,7 @@ public class QuizService {
 
     //Score comparison Calculation
 
-    public void printFinalScore()
+    public QuizResult getResult()
     {
         int correctAnswers=0;
         int incorrectAnswer=0;
@@ -65,10 +78,38 @@ public class QuizService {
 
         double percentage = ((double) correctAnswers / questions.length) * 100;
 
-        System.out.println();
+        String suggestion =getSuggestion(percentage);
+
+        QuizResult quizResult = new QuizResult(correctAnswers,incorrectAnswer,percentage,suggestion);
+
+        return quizResult;
+
+       /*
+       System.out.println();
         System.out.println("Correct Answer : "+correctAnswers);
         System.out.println("Incorrect Answer : "+incorrectAnswer);
         System.out.println("Percentage : "+percentage);
+
+        */
+    }
+
+    //Method not exposing to client-make private
+    private String getSuggestion(double percentage)
+    {
+        String suggestion ="";
+
+        if(percentage >=0 && percentage <=30)
+        {
+            suggestion = "Not good";
+        } else if (percentage>=31 && percentage<=60) {
+            suggestion = "good";
+        } else if (percentage>=61 && percentage<=90) {
+            suggestion = "Topper";
+        }else {
+            suggestion = "Very Good and Topped";
+        }
+
+        return suggestion;
     }
 
 }
