@@ -16,7 +16,7 @@ public class QuestionService {
 
     public QuestionService(int size)
     {
-
+        //Object of Service provide service to client
         //Define Size of Array
         questions =new  Question[size];
 
@@ -90,6 +90,8 @@ public class QuestionService {
             if (questions[i] != null) {
                 if (id == questions[i].getId()) {
                     questions[i] = null;
+                    //Making eligible for garbage collector to be removed from
+                    //heap memory in next cycle of run
                 }
             }
         }
